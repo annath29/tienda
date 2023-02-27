@@ -25,7 +25,7 @@ import jakarta.persistence.Table;
 public class Factura implements Serializable{
 	private static final long serialVersionUID=1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id",nullable = false)
 	private Integer id;
 	

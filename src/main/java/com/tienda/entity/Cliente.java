@@ -9,6 +9,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -17,7 +18,7 @@ import jakarta.persistence.Table;
 @Table(name="clientes")
 public class Cliente {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id",nullable = false)
 	private Integer id;
 	
@@ -27,7 +28,7 @@ public class Cliente {
 	private String apellido;
 	
 	@JsonIgnoreProperties({"cliente","hibernateLazyInitializer","handler"})
-	@OneToMany(fetch=FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "clientes")
+	@OneToMany(fetch=FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "cliente")
 	private List<Factura>facturas;
 
 	public Integer getId() {
